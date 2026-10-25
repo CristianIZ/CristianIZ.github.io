@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cristian Zappala — Senior Full Stack Developer</title>
+<meta name="description" content="Cristian Zappala — Senior Full Stack Developer — .NET · C# · Angular · Microservices · AI-Assisted Development">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--ink:#0d1117;--muted:#5d6675;--line:#e4e7ec;--blue:#1d4ed8;--blue-2:#3b82f6;--blue-soft:#e8effe;--blue-ink:#1e3a8a;--shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.06)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+a{color:var(--blue)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+/* Hero */
+.hero{background:var(--card);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 90% -10%,rgba(59,130,246,.14),transparent 70%),radial-gradient(400px 200px at 0% 110%,rgba(29,78,216,.08),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;padding-top:64px;padding-bottom:48px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;color:var(--blue);background:var(--blue-soft);padding:4px 12px;border-radius:999px;margin:0 0 18px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.2)}
+.hero h1{font-size:clamp(2.4rem,7vw,4rem);line-height:1;margin:0;letter-spacing:-.035em;font-weight:800}
+.hero .headline{font-size:clamp(1rem,2.4vw,1.25rem);color:var(--blue);font-weight:600;margin:14px 0 6px}
+.hero .loc{color:var(--muted);margin:0 0 26px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font:600 .95rem Inter,system-ui,sans-serif;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn svg{width:18px;height:18px}
+.stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+.stat b{display:block;font-size:1.8rem;letter-spacing:-.02em;line-height:1.1}
+.stat span{color:var(--muted);font-size:.85rem}
+/* Nav */
+nav.toc{position:sticky;top:0;z-index:20;background:rgba(247,248,250,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:22px;overflow-x:auto;padding-top:12px;padding-bottom:12px;white-space:nowrap;font-size:.9rem}
+nav.toc a{color:var(--muted);text-decoration:none;font-weight:500}nav.toc a:hover,nav.toc a.on{color:var(--blue)}
+/* Sections */
+main section{padding-top:56px;scroll-margin-top:50px}
+h2{font-size:clamp(1.5rem,3.5vw,2rem);letter-spacing:-.02em;margin:0 0 6px}
+.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--blue);font-weight:700;margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 24px;max-width:640px}
+#summary p{font-size:1.08rem;max-width:760px}
+#achievements ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+#achievements li{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+#achievements li::before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--blue-2))}
+#achievements li strong{display:block;font-size:1.02rem;margin-bottom:8px;line-height:1.35}
+#achievements li{color:var(--muted);font-size:.95rem}#achievements li strong{color:var(--ink)}
+/* Chart */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:7px 14px;border-radius:999px;font:500 .88rem Inter,system-ui,sans-serif;cursor:pointer}
+.tab[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bars{display:grid;gap:10px}
+.bar{display:grid;grid-template-columns:170px 1fr 52px;align-items:center;gap:14px;background:none;border:0;padding:4px 6px;margin:0 -6px;border-radius:8px;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.bar:hover,.bar.on{background:var(--blue-soft)}
+.bar .lbl{font-weight:600;font-size:.93rem}
+.bar .track{height:12px;background:#eef1f5;border-radius:999px;overflow:hidden}
+.bar .fill{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue-2));transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.bar .val{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.88rem;text-align:right}
+.bar.dim{opacity:.45}
+.chart-foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.recent{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.srows{display:grid;gap:14px;margin-top:20px}
+.srow{display:grid;grid-template-columns:200px 1fr;gap:14px}
+.srow h4{margin:4px 0 0;font-size:.92rem}
+@media (max-width:640px){.bar{grid-template-columns:110px 1fr 40px;gap:10px}.srow{grid-template-columns:1fr;gap:6px}}
+/* Chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{border:1px solid transparent;background:var(--blue-soft);color:var(--blue-ink);border-radius:999px;padding:3px 11px;font:500 .8rem Inter,system-ui,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+.chip:hover{border-color:var(--blue-2)}
+.chip.on{background:var(--blue);color:#fff}
+.chip.small{font-size:.76rem;padding:2px 9px}
+.chips.static span{background:#eef1f5;color:#344054;border-radius:999px;padding:3px 11px;font-size:.8rem;font-weight:500}
+/* Filter bar */
+.filter{display:none;align-items:center;gap:10px;flex-wrap:wrap;background:var(--ink);color:#fff;border-radius:12px;padding:10px 14px;margin-bottom:18px;font-size:.92rem}
+.filter.show{display:flex}
+.filter b{color:#93b4ff}
+.filter button{margin-left:auto;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:8px;padding:5px 12px;font:600 .82rem Inter,system-ui,sans-serif;cursor:pointer}
+/* Gantt */
+.gantt{position:relative;margin-bottom:34px}
+.grows{position:relative;display:grid;gap:6px;padding-bottom:26px}
+.gbar{position:relative;margin-left:var(--l);width:var(--w);min-width:6px;height:30px;border:0;border-radius:8px;background:linear-gradient(90deg,var(--blue),var(--blue-2));color:#fff;font:600 .78rem Inter,system-ui,sans-serif;text-align:left;padding:0 10px;cursor:pointer;white-space:nowrap;overflow:visible;transition:opacity .2s,transform .15s;transform-origin:left;animation:grow .8s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i)*70ms)}
+.gbar span{position:relative;z-index:1}
+.gbar:hover{transform:scaleY(1.08)}
+.gbar.narrow span{position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);color:var(--ink)}
+.gbar.narrow.left span{left:auto;right:calc(100% + 8px)}
+.gbar.dim{opacity:.18}
+.gantt{overflow:hidden}
+@keyframes grow{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.ticks{position:absolute;left:0;right:0;bottom:0;height:20px;border-top:1px solid var(--line)}
+.tick{position:absolute;left:var(--l);transform:translateX(-50%);font-size:.75rem;color:var(--muted);padding-top:3px}
+.tick::before{content:"";position:absolute;left:50%;top:-5px;height:5px;border-left:1px solid #cfd5dd}
+.gridline{position:absolute;top:0;bottom:26px;left:var(--l);border-left:1px dashed #e4e7ec;pointer-events:none}
+/* Timeline */
+.tl{list-style:none;margin:0;padding:0 0 0 28px;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--blue),#c7d6fb)}
+.tl-item{position:relative;margin-bottom:18px;transition:opacity .25s}
+.tl-item .dot{position:absolute;left:-28px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--card);border:3px solid var(--blue)}
+.tl-item.dim{opacity:.3}
+.tl-item.hit .card{border-color:var(--blue-2);box-shadow:0 0 0 3px rgba(59,130,246,.15),var(--shadow)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 14px;box-shadow:var(--shadow);transition:box-shadow .2s,border-color .2s}
+.card-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.card h3{margin:0;font-size:1.2rem;letter-spacing:-.01em}
+.card .role{margin:0;color:var(--blue);font-weight:600;font-size:.95rem}
+.badge{flex:none;background:#eef1f5;color:#344054;border-radius:999px;padding:3px 10px;font-size:.78rem;font-weight:600}
+.meta{color:var(--muted);font-size:.88rem;margin:6px 0 8px}
+.card p{margin:6px 0}
+.block{margin-top:14px;padding:14px 16px;border-radius:12px;background:#f8fafc;border:1px solid var(--line)}
+.block-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.block h4{margin:0;font-size:1rem;color:var(--blue-ink)}
+.dur{font-size:.78rem;color:var(--muted);font-weight:600;white-space:nowrap}
+.block .desc{color:var(--muted);font-size:.92rem}
+.more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.more>*{overflow:hidden}
+.more ul{margin:0;padding-left:20px}
+.more li{margin:6px 0;font-size:.95rem}
+.more li::marker{color:var(--blue)}
+.card.open .more{grid-template-rows:1fr}
+.card.open .more ul{margin:8px 0 4px}
+.toggle{margin-top:12px;background:none;border:0;color:var(--blue);font:600 .88rem Inter,system-ui,sans-serif;cursor:pointer;padding:4px 0}
+.toggle::after{content:" ↓"}.card.open .toggle::after{content:" ↑"}
+/* Education */
+#education .panel p{margin:0 0 8px;color:var(--muted)}
+#education .panel p:first-child{font-size:1.15rem;color:var(--ink);padding:4px 0 14px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+#education .panel p:first-child strong{display:block;font-size:1.45rem;letter-spacing:-.01em;color:var(--blue);line-height:1.25}
+.hero .degree{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 12px;margin:4px 0 10px}
+.hero .degree svg{width:20px;height:20px;color:var(--blue)}
+footer{color:var(--muted);text-align:center;font-size:.85rem;padding:56px 16px 40px}
+/* Reveal */
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.tl-item.reveal.in.dim{opacity:.3}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">Open to remote contract work</p>
+  <h1>Cristian Zappala</h1>
+  <p class="headline">Senior Full Stack Developer — .NET · C# · Angular · Microservices · AI-Assisted Development</p>
+  <p class="degree"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg>Systems Engineering (Ingeniería en Sistemas) · UAI · 2025</p>
+  <p class="loc">Buenos Aires, Argentina (Remote / UTC-3) · Spanish: Native · English: Advanced</p>
+  <div class="actions">
+    <a class="btn primary" href="Zappala_Cristian_CV_EN.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg> Download CV</a>
+    <a class="btn" href="https://linkedin.com/in/cristianzappala" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg> LinkedIn</a>
+    <button class="btn" type="button" id="contact" data-u="8041sirC" data-d="moc.liamg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Contact</button>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>8+</b><span>years building software</span></div>
+    <div class="stat"><b>6</b><span>companies</span></div>
+    <div class="stat"><b>6</b><span>industries</span></div>
+  </div>
+</div></header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#summary">Summary</a><a href="#achievements">Highlights</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#education">Education</a>
+</div></nav>
+
+<main class="wrap">
+  <section id="summary" class="reveal">
+    <p class="kicker">About</p><h2>Summary</h2>
+    <p>Senior Full Stack Developer with 8+ years building and modernizing business-critical applications in finance, healthcare, energy, pharma, education and enterprise environments. Specialized in .NET/C# backends, Angular front-ends and microservices architectures backed by SQL Server and RabbitMQ.</p><p>Specialized in both building new applications from the ground up and modernizing legacy systems without disrupting the business. Comfortable across the full cycle — analysis, solution design, estimation, implementation and production support — in distributed agile teams.</p><p>AI is part of my everyday workflow: I use Claude across the whole development cycle — understanding legacy code, design, implementation, refactoring, test writing, code review and documentation — with clear specs and project guidelines that keep AI-generated code consistent and reviewable.</p>
+  </section>
+
+  <section id="achievements" class="reveal">
+    <p class="kicker">Highlights</p><h2>Selected achievements</h2><p class="lead">Problems I owned end to end.</p>
+    <ul>
+<li><strong>Delivering a national-scale system in a fraction of the estimated time with AI-assisted development.</strong> Assigned by Hiberus to an urgent project, in a three-person team, building a full-stack platform for Argentina's national education assessment (Aprender) that we estimated at over a year of traditional work, on track for delivery in about three months — including client feedback cycles and changes in requirements.</li>
+<li><strong>Diagnosed and fixed silent message loss in a production purchasing platform.</strong> Took over a critical RabbitMQ issue after the tech lead left, traced it to an architectural flaw where ACKs were sent before processing completed, and restored a purchasing flow that was losing customer orders for Argentina's leading pharmaceutical retailer.</li>
+<li><strong>Prevented a security-protocol failure from reaching production</strong> by designing and shipping a YARP-based proxy API that isolated the incompatibility, allowing a legacy system to keep operating while modernization continued.</li>
+</ul>
+  </section>
+
+  <section id="skills" class="reveal">
+    <p class="kicker">Skills</p><h2>Years with each technology</h2>
+    <p class="lead">Calculated from the projects in my experience. Click a technology to see where I used it.</p>
+    <div class="panel">
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div class="bars" id="bars"></div>
+      <div class="chart-foot"><p class="recent"><strong>Recently added:</strong> <button type="button" class="chip small" data-tech="Python">Python</button><button type="button" class="chip small" data-tech="FastAPI">FastAPI</button><button type="button" class="chip small" data-tech="React">React</button><button type="button" class="chip small" data-tech="Next.js">Next.js</button><button type="button" class="chip small" data-tech="PostgreSQL">PostgreSQL</button><button type="button" class="chip small" data-tech="Kubernetes">Kubernetes</button><button type="button" class="chip small" data-tech="GitLab CI">GitLab CI</button></p><span>Click any bar to filter the timeline ↓</span></div>
+      <div class="srows"><div class="srow"><h4>AI-Assisted Development</h4><div class="chips static"><span>Claude — code generation</span><span>refactoring</span><span>legacy code analysis</span><span>test writing</span><span>code review</span><span>documentation</span><span>agent guidelines and spec-driven workflows</span></div></div><div class="srow"><h4>Practices &amp; Tools</h4><div class="chips static"><span>Scrum</span><span>code review</span><span>Git / GitHub / GitLab</span><span>Jira</span><span>technical interviewing</span></div></div><div class="srow"><h4>Working knowledge</h4><div class="chips static"><span>Docker</span><span>CI/CD pipeline configuration</span><span>Oracle Database</span></div></div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <p class="kicker">Experience</p><h2>Career timeline</h2>
+    <p class="lead">Click a bar to jump to that role, or a technology chip to highlight where I used it.</p>
+    <div class="filter" id="filter">Showing roles with <b id="fname"></b> · <span id="fcount"></span><button type="button" id="fclear">Clear filter</button></div>
+    <div class="gantt panel"><div class="grows"><button type="button" class="gbar" data-job="job-0" data-techs=".NET|Alembic|Angular|C#|Claude|Docker|FastAPI|GitLab CI|Kubernetes|Next.js|PostgreSQL|Python|REST APIs|RabbitMQ|React|RxJS|SQL Server|SQLAlchemy|TanStack Query|TypeScript|Vitest|YARP|pytest" style="--l:86.79%;--w:13.21%;--i:0" title="Hiberus · 1 yr 2 mos"><span>Hiberus</span></button><button type="button" class="gbar" data-job="job-1" data-techs=".NET|Angular|Azure|C#|Entity Framework|GitHub|RxJS|Scrum|TypeScript" style="--l:83.02%;--w:3.77%;--i:1" title="S3 / Chevron · 4 mos"><span>S3 / Chevron</span></button><button type="button" class="gbar" data-job="job-2" data-techs=".NET|Angular|C#|Docker|Elasticsearch|Entity Framework|GitHub|Jira|RabbitMQ|Redis|RxJS|SQL Server|TypeScript|WinForms" style="--l:71.70%;--w:12.26%;--i:2" title="Hipódromo Argentino de Palermo · 1 yr 1 mo"><span>Hipódromo Argentino de Palermo</span></button><button type="button" class="gbar" data-job="job-3" data-techs=".NET|Angular|Azure|C#|Docker|Domain-Driven Design|Entity Framework|GitHub|Microservices|REST APIs|RxJS|SQL Server|TypeScript" style="--l:46.23%;--w:26.42%;--i:3" title="Softensity · 2 yrs 4 mos"><span>Softensity</span></button><button type="button" class="gbar" data-job="job-4" data-techs=".NET|Angular|Azure|C#|Entity Framework|GitHub|Microservices|MongoDB|REST APIs|RabbitMQ|RxJS|SQL Server|TypeScript" style="--l:17.92%;--w:28.30%;--i:4" title="Hexacta · 2 yrs 6 mos"><span>Hexacta</span></button><button type="button" class="gbar" data-job="job-5" data-techs=".NET|C#|Elasticsearch|JavaScript|MSMQ|Microservices|REST APIs|SQL Server|WinForms|jQuery" style="--l:0.00%;--w:18.87%;--i:5" title="Nosis · 1 yr 8 mos"><span>Nosis</span></button><div class="ticks"><span class="tick" style="--l:11.32%">2019</span><span class="tick" style="--l:22.64%">2020</span><span class="tick" style="--l:33.96%">2021</span><span class="tick" style="--l:45.28%">2022</span><span class="tick" style="--l:56.60%">2023</span><span class="tick" style="--l:67.92%">2024</span><span class="tick" style="--l:79.25%">2025</span><span class="tick" style="--l:90.57%">2026</span></div></div></div>
+    <ol class="tl">
+<li class="tl-item reveal" id="job-0" data-techs=".NET|Alembic|Angular|C#|Claude|Docker|FastAPI|GitLab CI|Kubernetes|Next.js|PostgreSQL|Python|REST APIs|RabbitMQ|React|RxJS|SQL Server|SQLAlchemy|TanStack Query|TypeScript|Vitest|YARP|pytest">
+  <span class="dot" aria-hidden="true"></span>
+  <article class="card">
+    <header class="card-head">
+      <div><h3>Hiberus</h3><p class="role">Senior Full Stack Developer</p></div>
+      <span class="badge">1 yr 2 mos</span>
+    </header>
+    <p class="meta">Sep 2025 – Present · Consultancy · Buenos Aires, Argentina (Remote)</p>
+    <div class="block"><div class="block-head"><h4>Aprender 2.0</h4><span class="dur">2 mos</span></div><p class="desc">Urgent, three-person project: management platform for Argentina's national education assessment (reception, scanning control, verification and results of student test booklets).</p><div class="more"><ul>
+<li>Designed the system architecture: a layered REST API (presentation → application → repository abstractions → infrastructure) with FastAPI and async SQLAlchemy, a Next.js/React front-end, and independent processes for image ingestion, publication and results.</li>
+<li>Led most of the PostgreSQL database design, managed through Alembic migrations.</li>
+<li>Hands-on development across the whole stack: API endpoints with JWT authentication, role-based permissions and auditing; Next.js/React screens for administration, verification and dashboards; RabbitMQ integration with an external scanning provider (images and OMR results); Docker images and GitLab CI/CD deployments to Kubernetes.</li>
+<li>Working with AI-assisted development, the team is delivering in about three months a system estimated at over a year of traditional work, while absorbing client feedback and requirement changes.</li>
+</ul></div><div class="chips"><button type="button" class="chip" data-tech="Python">Python</button><button type="button" class="chip" data-tech="FastAPI">FastAPI</button><button type="button" class="chip" data-tech="SQLAlchemy">SQLAlchemy</button><button type="button" class="chip" data-tech="PostgreSQL">PostgreSQL</button><button type="button" class="chip" data-tech="Alembic">Alembic</button><button type="button" class="chip" data-tech="Next.js">Next.js</button><button type="button" class="chip" data-tech="React">React</button><button type="button" class="chip" data-tech="TypeScript">TypeScript</button><button type="button" class="chip" data-tech="TanStack Query">TanStack Query</button><button type="button" class="chip" data-tech="RabbitMQ">RabbitMQ</button><button type="button" class="chip" data-tech="Docker">Docker</button><button type="button" class="chip" data-tech="Kubernetes">Kubernetes</button><button type="button" class="chip" data-tech="GitLab CI">GitLab CI</button><button type="button" class="chip" data-tech="pytest">pytest</button><button type="button" class="chip" data-tech="Vitest">Vitest</button><button type="button" class="chip" data-tech="Claude">Claude</button></div></div><div class="block"><div class="block-head"><h4>Vital (wholesale retailer)</h4><span class="dur">1 yr 2 mos</span></div><p class="desc">Joined a legacy platform that needed urgent fixes while several business flows required full modernization.</p><div class="more"><ul>
+<li>Proposed and implemented .NET solutions to support and progressively replace legacy operational flows, working with a high level of autonomy across analysis, solution design and estimation.</li>
+<li>Designed and delivered a YARP proxy API that mitigated security-protocol issues before they reached production.</li>
+<li>Use AI (Claude) daily to analyze undocumented legacy code, speed up refactoring and produce technical documentation.</li>
+<li>Coordinate directly with business stakeholders to define scope and priorities for modernization work.</li>
+</ul></div><div class="chips"><button type="button" class="chip" data-tech=".NET">.NET</button><button type="button" class="chip" data-tech="C#">C#</button><button type="button" class="chip" data-tech="YARP">YARP</button><button type="button" class="chip" data-tech="REST APIs">REST APIs</button><button type="button" class="chip" data-tech="SQL Server">SQL Server</button><button type="button" class="chip" data-tech="Angular">Angular</button></div></div>
+    <button type="button" class="toggle" aria-expanded="false">Show details</button>
+  </article>
+</li>
+<li class="tl-item reveal" id="job-1" data-techs=".NET|Angular|Azure|C#|Entity Framework|GitHub|RxJS|Scrum|TypeScript">
+  <span class="dot" aria-hidden="true"></span>
+  <article class="card">
+    <header class="card-head">
+      <div><h3>S3 / Chevron</h3><p class="role">Senior Full Stack Developer</p></div>
+      <span class="badge">4 mos</span>
+    </header>
+    <p class="meta">May 2025 – Aug 2025 · Remote · Contract engagement</p>
+    <p>Short-term consulting assignment inside an enterprise agile environment.</p><div class="more"><ul>
+<li>Designed and implemented REST APIs in .NET/C# and front-end modules in Angular for enterprise business applications.</li>
+<li>Delivered features through Azure CI/CD pipelines across multiple environments, reducing manual deployment steps and release errors.</li>
+<li>Worked with architects and product owners on scalability and performance decisions, and drove peer review practices for pull requests.</li>
+</ul></div><div class="chips"><button type="button" class="chip" data-tech=".NET">.NET</button><button type="button" class="chip" data-tech="C#">C#</button><button type="button" class="chip" data-tech="Entity Framework">Entity Framework</button><button type="button" class="chip" data-tech="Angular">Angular</button><button type="button" class="chip" data-tech="Azure">Azure</button><button type="button" class="chip" data-tech="GitHub">GitHub</button><button type="button" class="chip" data-tech="Scrum">Scrum</button></div>
+    <button type="button" class="toggle" aria-expanded="false">Show details</button>
+  </article>
+</li>
+<li class="tl-item reveal" id="job-2" data-techs=".NET|Angular|C#|Docker|Elasticsearch|Entity Framework|GitHub|Jira|RabbitMQ|Redis|RxJS|SQL Server|TypeScript|WinForms">
+  <span class="dot" aria-hidden="true"></span>
+  <article class="card">
+    <header class="card-head">
+      <div><h3>Hipódromo Argentino de Palermo</h3><p class="role">Senior Full Stack Developer</p></div>
+      <span class="badge">1 yr 1 mo</span>
+    </header>
+    <p class="meta">May 2024 – May 2025 · Buenos Aires, Argentina · Argentina&#x27;s main horse-racing venue and betting operator.</p>
+    <div class="more"><ul>
+<li>Developed and maintained business-critical applications supporting internal operations and public-facing betting services.</li>
+<li>Designed and optimized SQL Server databases handling high-volume operational and betting data, tuning schemas, indexes and queries for reliable performance under peak load.</li>
+<li>Integrated internal and third-party systems through APIs and web services.</li>
+<li>Introduced centralized logging and monitoring with Serilog, Kibana and Elasticsearch, cutting down the time needed to identify and troubleshoot production incidents.</li>
+</ul></div><div class="chips"><button type="button" class="chip" data-tech=".NET">.NET</button><button type="button" class="chip" data-tech="C#">C#</button><button type="button" class="chip" data-tech="Entity Framework">Entity Framework</button><button type="button" class="chip" data-tech="Angular">Angular</button><button type="button" class="chip" data-tech="WinForms">WinForms</button><button type="button" class="chip" data-tech="SQL Server">SQL Server</button><button type="button" class="chip" data-tech="Redis">Redis</button><button type="button" class="chip" data-tech="Elasticsearch">Elasticsearch</button><button type="button" class="chip" data-tech="RabbitMQ">RabbitMQ</button><button type="button" class="chip" data-tech="Docker">Docker</button><button type="button" class="chip" data-tech="GitHub">GitHub</button><button type="button" class="chip" data-tech="Jira">Jira</button></div>
+    <button type="button" class="toggle" aria-expanded="false">Show details</button>
+  </article>
+</li>
+<li class="tl-item reveal" id="job-3" data-techs=".NET|Angular|Azure|C#|Docker|Domain-Driven Design|Entity Framework|GitHub|Microservices|REST APIs|RxJS|SQL Server|TypeScript">
+  <span class="dot" aria-hidden="true"></span>
+  <article class="card">
+    <header class="card-head">
+      <div><h3>Softensity</h3><p class="role">Senior Full Stack Developer</p></div>
+      <span class="badge">2 yrs 4 mos</span>
+    </header>
+    <p class="meta">Feb 2022 – May 2024 · US-based consultancy (Remote)</p>
+    <div class="block"><div class="block-head"><h4>Care Guide</h4><span class="dur">9 mos</span></div><p class="desc">Platform connecting older adults with care communities and geriatric services.</p><div class="more"><ul>
+<li>Built and maintained features in a microservices platform using .NET/C# and Angular, applying Domain-Driven Design.</li>
+<li>Worked with cross-functional product teams to translate care-provider requirements into shipped product improvements.</li>
+</ul></div></div><div class="block"><div class="block-head"><h4>EY</h4><span class="dur">1 yr 8 mos</span></div><p class="desc">US accounting and tax platform.</p><div class="more"><ul>
+<li>Developed and maintained backend services and Angular front-end features for a US accounting platform.</li>
+<li>Worked in Scrum with distributed teams across the United States, Brazil, Belarus, India and Turkey.</li>
+<li>Contributed beyond delivery: conducted technical interviews for the company, launched internal training initiatives on new technologies, and represented the team in an internal AI contest.</li>
+</ul></div><div class="chips"><button type="button" class="chip" data-tech=".NET">.NET</button><button type="button" class="chip" data-tech="C#">C#</button><button type="button" class="chip" data-tech="Entity Framework">Entity Framework</button><button type="button" class="chip" data-tech="Microservices">Microservices</button><button type="button" class="chip" data-tech="Domain-Driven Design">Domain-Driven Design</button><button type="button" class="chip" data-tech="Angular">Angular</button><button type="button" class="chip" data-tech="SQL Server">SQL Server</button><button type="button" class="chip" data-tech="Azure">Azure</button><button type="button" class="chip" data-tech="Docker">Docker</button><button type="button" class="chip" data-tech="GitHub">GitHub</button></div></div>
+    <button type="button" class="toggle" aria-expanded="false">Show details</button>
+  </article>
+</li>
+<li class="tl-item reveal" id="job-4" data-techs=".NET|Angular|Azure|C#|Entity Framework|GitHub|Microservices|MongoDB|REST APIs|RabbitMQ|RxJS|SQL Server|TypeScript">
+  <span class="dot" aria-hidden="true"></span>
+  <article class="card">
+    <header class="card-head">
+      <div><h3>Hexacta</h3><p class="role">Full Stack Developer</p></div>
+      <span class="badge">2 yrs 6 mos</span>
+    </header>
+    <p class="meta">Aug 2019 – Jan 2022 · Buenos Aires, Argentina · Microservices purchasing platform for Argentina&#x27;s leading pharmaceutical retailer.</p>
+    <div class="more"><ul>
+<li>Took ownership of a critical RabbitMQ failure after the technical lead left the team, investigating message loss that was silently affecting user purchases.</li>
+<li>Identified an architectural flaw where ACKs were sent before successful processing; redesigned the consumer flow and eliminated the loss, protecting a core revenue path.</li>
+<li>Designed and maintained microservices for purchase-order management, collaborating with stakeholders on pharma-specific requirements.</li>
+</ul></div><div class="chips"><button type="button" class="chip" data-tech=".NET">.NET</button><button type="button" class="chip" data-tech="C#">C#</button><button type="button" class="chip" data-tech="Entity Framework">Entity Framework</button><button type="button" class="chip" data-tech="Microservices">Microservices</button><button type="button" class="chip" data-tech="RabbitMQ">RabbitMQ</button><button type="button" class="chip" data-tech="Angular">Angular</button><button type="button" class="chip" data-tech="SQL Server">SQL Server</button><button type="button" class="chip" data-tech="MongoDB">MongoDB</button><button type="button" class="chip" data-tech="Azure">Azure</button><button type="button" class="chip" data-tech="GitHub">GitHub</button></div>
+    <button type="button" class="toggle" aria-expanded="false">Show details</button>
+  </article>
+</li>
+<li class="tl-item reveal" id="job-5" data-techs=".NET|C#|Elasticsearch|JavaScript|MSMQ|Microservices|REST APIs|SQL Server|WinForms|jQuery">
+  <span class="dot" aria-hidden="true"></span>
+  <article class="card">
+    <header class="card-head">
+      <div><h3>Nosis</h3><p class="role">Full Stack Developer</p></div>
+      <span class="badge">1 yr 8 mos</span>
+    </header>
+    <p class="meta">Jan 2018 – Aug 2019 · Buenos Aires, Argentina · Credit bureau and financial information provider.</p>
+    <div class="more"><ul>
+<li>Led end-to-end development of a system displaying brands together with tax identifiers and financial data, from requirements to production.</li>
+<li>Built a dedicated microservice and a .NET importer feeding Elasticsearch, enabling fast search across the company's brand and tax-identifier dataset.</li>
+<li>Delivered software under strict reliability and security requirements for sensitive financial data.</li>
+</ul></div><div class="chips"><button type="button" class="chip" data-tech=".NET">.NET</button><button type="button" class="chip" data-tech="C#">C#</button><button type="button" class="chip" data-tech="Microservices">Microservices</button><button type="button" class="chip" data-tech="REST APIs">REST APIs</button><button type="button" class="chip" data-tech="WinForms">WinForms</button><button type="button" class="chip" data-tech="SQL Server">SQL Server</button><button type="button" class="chip" data-tech="Elasticsearch">Elasticsearch</button><button type="button" class="chip" data-tech="MSMQ">MSMQ</button><button type="button" class="chip" data-tech="JavaScript">JavaScript</button><button type="button" class="chip" data-tech="jQuery">jQuery</button></div>
+    <button type="button" class="toggle" aria-expanded="false">Show details</button>
+  </article>
+</li></ol>
+  </section>
+
+  <section id="education" class="reveal">
+    <p class="kicker">Education</p><h2>Education</h2>
+    <div class="panel"><p><strong>Systems Engineering (Ingeniería en Sistemas)</strong>Universidad Abierta Interamericana (UAI) · Graduated 2025</p><p><strong>Additional:</strong> Aircraft Aeronautical Technician (MMA), E.E.S.T. Nº 7 · Radio Electric Equipment Aircraft Technician (MERA), INAC-CIATA</p></div>
+  </section>
+</main>
+<footer>© 2026 Cristian Zappala</footer>
+<script type="application/json" id="chart-data">{"chart": [{"cat": "Backend", "rows": [{"tech": ".NET", "years": 8.8}, {"tech": "C#", "years": 8.8}, {"tech": "REST APIs", "years": 7.6}, {"tech": "Microservices", "years": 6.4}, {"tech": "Entity Framework", "years": 6.1}, {"tech": "WinForms", "years": 2.8}, {"tech": "Domain-Driven Design", "years": 2.3}, {"tech": "YARP", "years": 1.2}]}, {"cat": "Frontend", "rows": [{"tech": "Angular", "years": 7.2}, {"tech": "TypeScript", "years": 7.2}, {"tech": "RxJS", "years": 7.2}, {"tech": "JavaScript", "years": 1.7}, {"tech": "jQuery", "years": 1.7}]}, {"cat": "Data & Messaging", "rows": [{"tech": "SQL Server", "years": 8.6}, {"tech": "RabbitMQ", "years": 3.8}, {"tech": "Elasticsearch", "years": 2.8}, {"tech": "MongoDB", "years": 2.5}, {"tech": "MSMQ", "years": 1.7}, {"tech": "Redis", "years": 1.1}]}, {"cat": "Cloud & DevOps", "rows": [{"tech": "Azure", "years": 5.2}]}], "max": 8.8}</script>
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var DATA = JSON.parse(document.getElementById('chart-data').textContent);
+  var bars = document.getElementById('bars'), tabs = document.getElementById('tabs');
+  var active = null, cat = 'All';
+
+  function renderBars(){
+    var rows = [];
+    DATA.chart.forEach(function(c){ if(cat==='All'||cat===c.cat) rows = rows.concat(c.rows); });
+    rows.sort(function(a,b){return b.years-a.years});
+    if(cat==='All') rows = rows.slice(0,12);
+    bars.innerHTML = rows.map(function(r){
+      return '<button type="button" class="bar" data-tech="'+r.tech+'"><span class="lbl">'+r.tech+'</span>'+
+        '<span class="track"><span class="fill" data-w="'+(r.years/DATA.max*100).toFixed(1)+'"></span></span>'+
+        '<span class="val">'+r.years.toFixed(1)+' y</span></button>';
+    }).join('');
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      bars.querySelectorAll('.fill').forEach(function(f){ if(bars.dataset.seen) f.style.width=f.dataset.w+'%'; });
+    });});
+    applyFilter();
+  }
+  ['All'].concat(DATA.chart.map(function(c){return c.cat})).forEach(function(c){
+    var b=document.createElement('button'); b.type='button'; b.className='tab'; b.textContent=c;
+    b.setAttribute('role','tab'); b.setAttribute('aria-selected', c===cat);
+    b.onclick=function(){ cat=c; tabs.querySelectorAll('.tab').forEach(function(t){t.setAttribute('aria-selected', t===b)}); renderBars(); };
+    tabs.appendChild(b);
+  });
+  new IntersectionObserver(function(es,o){ es.forEach(function(e){ if(e.isIntersecting){ bars.dataset.seen=1;
+    bars.querySelectorAll('.fill').forEach(function(f){f.style.width=f.dataset.w+'%'}); o.disconnect(); } }); },{threshold:.3}).observe(bars);
+
+  // ---- Filtro por tecnología ----
+  var fbar = document.getElementById('filter'), fname = document.getElementById('fname'), fcount = document.getElementById('fcount');
+  function has(el, t){ return (el.dataset.techs||'').split('|').indexOf(t) >= 0; }
+  function applyFilter(){
+    document.querySelectorAll('[data-tech]').forEach(function(el){ el.classList.toggle('on', active!==null && el.dataset.tech===active); });
+    document.querySelectorAll('.bar').forEach(function(el){ el.classList.toggle('dim', active!==null && el.dataset.tech!==active); });
+    var n=0;
+    document.querySelectorAll('.tl-item').forEach(function(el){ var h=active===null||has(el,active); if(active&&h)n++; el.classList.toggle('dim',!h); el.classList.toggle('hit',active!==null&&h); });
+    document.querySelectorAll('.gbar').forEach(function(el){ el.classList.toggle('dim', active!==null && !has(el,active)); });
+    fbar.classList.toggle('show', active!==null);
+    if(active){ fname.textContent=active; fcount.textContent=n+(n===1?' role':' roles'); }
+  }
+  function setTech(t, scroll){
+    active = (active===t) ? null : t; applyFilter();
+    if(active && scroll){ document.getElementById('experience').scrollIntoView({behavior:'smooth'}); }
+  }
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-tech]'); if(!el) return;
+    setTech(el.dataset.tech, el.classList.contains('bar'));
+  });
+  document.getElementById('fclear').onclick=function(){ active=null; applyFilter(); };
+
+  // ---- Gantt: clic lleva a la tarjeta ----
+  document.querySelectorAll('.gbar').forEach(function(g){
+    var gr=g.getBoundingClientRect(), sw=g.querySelector('span').getBoundingClientRect().width, box=g.parentNode.getBoundingClientRect();
+    if(gr.width < sw + 20){ g.classList.add('narrow'); if(gr.right + sw + 12 > box.right) g.classList.add('left'); }
+    g.onclick=function(){ var c=document.getElementById(g.dataset.job); c.scrollIntoView({behavior:'smooth',block:'center'});
+      var card=c.querySelector('.card'); card.classList.add('open'); card.querySelector('.toggle').setAttribute('aria-expanded','true'); card.querySelector('.toggle').textContent='Hide details'; };
+  });
+
+  // ---- Expandir tarjetas ----
+  document.querySelectorAll('.toggle').forEach(function(b){
+    b.onclick=function(){ var c=b.closest('.card'); var o=c.classList.toggle('open'); b.setAttribute('aria-expanded',o); b.textContent=o?'Hide details':'Show details'; };
+  });
+
+  // ---- Aparición al hacer scroll ----
+  var ro = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target);} }); },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
+
+  // ---- Nav activa ----
+  var links = document.querySelectorAll('nav.toc a');
+  var so = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+e.target.id); }); } }); },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section').forEach(function(s){ so.observe(s); });
+
+  // ---- Contacto sin exponer el mail ----
+  document.getElementById('contact').onclick=function(){ var u=this.dataset.u.split('').reverse().join(''), d=this.dataset.d.split('').reverse().join(''); location.href='mailto:'+u+'@'+d; };
+
+  renderBars();
+})();
+</script>
+</body>
+</html>
